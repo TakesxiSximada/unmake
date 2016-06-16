@@ -12,6 +12,7 @@ while ($buf =~ /^([^._][a-zA-Z0-9_\-]*):(.*)\n(^\t\@\##.*\n)?((^\t\@\#.*\n)*)/gm
     my $synopsis = $3 || "";
     my $msg = $4 || "";
 
+    $cmd =~ s/\A\s*(.*?)\s*\z/$1/;
     $synopsis =~ s/@##//g;
     $synopsis =~ s/\A\s*(.*?)\s*\z/$1/;
     $msg =~ s/\t\@\#/ /g;
