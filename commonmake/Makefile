@@ -1,16 +1,23 @@
 .PHONY: help
 help:
 	@# Display usage.
-	@./commonmake/usage Makefile
+	@./unmake/usage Makefile
 
-commnmake-sync:
-	@# Sync commonmake
-	@curl -L -o ./commonmake/usage https://raw.githubusercontent.com/TakesxiSximada/commonmake/develop/commonmake/usage
-	@curl -L -o ./commonmake/Makefile https://raw.githubusercontent.com/TakesxiSximada/commonmake/develop/commonmake/Makefile
-	@chmod 755 ./commonmake/usage
-	@git add ./commonmake/usage ./commonmake/Makefile
-	@git commit -m "sync commonmake" ./commonmake/usage ./commonmake/Makefile
+.PHONY: unmake-sync
+unmake-sync:
+	@# Sync unmake
+	@curl -L -o ./unmake/usage https://raw.githubusercontent.com/TakesxiSximada/unmake/develop/unmake/usage
+	@curl -L -o ./unmake/Makefile https://raw.githubusercontent.com/TakesxiSximada/unmake/develop/unmake/Makefile
+	@chmod 755 ./unmake/usage
 
-commnmake-remove:
-	@# Remove commonmake
-	@./commonmake/usage Makefile
+.PHONY: unmake-save
+unmake-save:
+	@# Save unmake
+	@git add ./unmake
+	@git commit -m "Update unmake" ./unmake
+
+.PHONY: unmake-uninstall
+unmake-uninstall:
+	@# Remove unmake
+	@git rm -rf unmake
+	@git commit -m "Uninstall unmake" ./unmake
