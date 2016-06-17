@@ -15,6 +15,6 @@ while ($buf =~ /^([^._][a-zA-Z0-9_\-]*):(.*)\n(^\t\@\##.*\n)?((^\t\@\#.*\n)*)/gm
     $cmd =~ s/\A\s*(.*?)\s*\z/$1/;
     $synopsis =~ s/@##//g;
     $synopsis =~ s/\A\s*(.*?)\s*\z/$1/;
-    $msg =~ s/\t\@\#/ /g;
-    printf("* %-20s\n%s\n", $cmd . " " . $synopsis, $msg);
+    $msg =~ s/\t\@\#/     /g;
+    printf("* %-20s\n\n%s\n\n", $cmd . " " . $synopsis, $msg);
 }
