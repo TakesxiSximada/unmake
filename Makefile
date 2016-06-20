@@ -1,4 +1,4 @@
-include unmake/Makefile *.mk # for commonmake
+include unmake/Makefile # for commonmake
 
 
 .PHONY: all
