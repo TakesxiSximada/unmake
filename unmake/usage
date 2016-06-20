@@ -1,20 +1,25 @@
 #! /usr/bin/env perl
-
 use strict;
 use warnings;
 
-open (FILE, "./Makefile") or die "$!";
-my $buf =  do { local $/; <FILE> };
-close FILE;
+sub display_usage  {
+    open (my $fp, $_[0]) or die "$!";
+    my $buf =  do { local $/; <$fp> };
+    close $fp;
 
-while ($buf =~ /^([^._][a-zA-Z0-9_\-]*):(.*)\n(^\t\@\##.*\n)?((^\t\@\#.*\n)*)/gm ) {
-    my $cmd = $1;
-    my $synopsis = $3 || "";
-    my $msg = $4 || "";
+    while ($buf =~ /^([^._][a-zA-Z0-9_\-]*):(.*)\n(^\t\@\##.*\n)?((^\t\@\#.*\n)*)/gm ) {
+        my $cmd = $1;
+        my $synopsis = $3 || "";
+        my $msg = $4 || "";
 
-    $cmd =~ s/\A\s*(.*?)\s*\z/$1/;
-    $synopsis =~ s/@##//g;
-    $synopsis =~ s/\A\s*(.*?)\s*\z/$1/;
-    $msg =~ s/\t\@\#/     /g;
-    printf("* %-20s\n\n%s\n\n", $cmd . " " . $synopsis, $msg);
+        $cmd =~ s/\A\s*(.*?)\s*\z/$1/;
+        $synopsis =~ s/@##//g;
+        $synopsis =~ s/\A\s*(.*?)\s*\z/$1/;
+        $msg =~ s/\t\@\#/     /g;
+        printf("* %-20s\n\n%s\n\n", $cmd . " " . $synopsis, $msg);
+    }
+}
+
+foreach (@ARGV) {
+    display_usage($_);
 }

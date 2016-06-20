@@ -1,0 +1,35 @@
+#! /usr/bin/env perl
+use strict;
+use warnings;
+
+use File::Basename;
+use File::Spec;
+use File::Spec::Functions;
+
+sub parse_inlucde {
+    my $path = File::Spec::Functions::rel2abs($_[0]);
+    my $dirpath = File::Basename::dirname($path);
+    printf("%s\n", $path);
+    open (my $fp, $path) or die "$!";
+    while (<$fp>) {
+        if (/^include ([^#]+)/){
+            my $tagret_line = $1;
+            foreach (split(/ /,  $tagret_line)) {
+                my $target_pattern = File::Spec::Functions::rel2abs($_);
+                foreach (glob $target_pattern) {
+                    my $target_file = $_;
+                    parse_inlucde($target_file);
+                }
+            }
+        }
+    }
+    close($fp);
+}
+
+
+sub main {
+    my $makefile_path = $_[0];
+    parse_inlucde($makefile_path);
+}
+
+main($ARGV[0]);
