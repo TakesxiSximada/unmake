@@ -80,9 +80,11 @@ $ make help
 
 以下のコマンドはunmakeが追加しています。
 
-|コマンド|用途|
-|-|-|
-|help|usageを表示します。|
-|unmake-sync|unmakeの最新のインストールします。|
-|unmake-save|unmakeをgitでcommitします。|
-|unmake-uninstall|unmakeを削除します。|
+* help
+    usageを表示します。
+* unmake-sync
+    unmakeの最新のインストールします。
+* unmake-save
+    unmakeをgitでcommitします。
+* unmake-uninstall
+    unmakeを削除します。
