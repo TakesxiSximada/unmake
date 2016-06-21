@@ -81,10 +81,10 @@ $ make help
 以下のコマンドはunmakeが追加しています。
 
 * help
-    usageを表示します。
+    : usageを表示します。
 * unmake-sync
-    unmakeの最新のインストールします。
+    : unmakeの最新のインストールします。
 * unmake-save
-    unmakeをgitでcommitします。
+    : unmakeをgitでcommitします。
 * unmake-uninstall
-    unmakeを削除します。
+    : unmakeを削除します。
