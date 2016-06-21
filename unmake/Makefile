@@ -1,7 +1,7 @@
 .PHONY: help
 help:
 	@# Display usage.
-	@./unmake/search Makefile | xargs ./unmake/usage
+	@./unmake/usage $(UNMAKE_CURRENT_MAKEFILE)
 
 .PHONY: unmake-sync
 unmake-sync:
