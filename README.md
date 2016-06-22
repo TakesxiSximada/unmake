@@ -1,4 +1,4 @@
-# unmake - Documentation builder for Makefile
+# unmake - Display usage for Makefile
 
 
 ## Install
