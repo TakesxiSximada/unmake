@@ -1,5 +1,4 @@
 package main
-
 import (
 	"strings"
 	"bufio"
@@ -12,6 +11,7 @@ import (
 	"io/ioutil"
 )
 
+const version = 1
 
 func DisplayUsage(makefilePath string) {
 	fp, err := os.OpenFile(makefilePath, os.O_RDONLY, 0600)
