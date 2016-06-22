@@ -1,6 +1,14 @@
-include unmake/Makefile # for commonmake
+UNMAKE := $${GOPATH}/bin/unmake
+
+.PHONY: build
+build:
+	@# build unmake
+
+	go build
 
 
-.PHONY: all
-all:
-	@unmake/search Makefile
+.PHONY: example
+example:
+	@# show example usage
+
+	@$(UNMAKE) examples/Makefile
