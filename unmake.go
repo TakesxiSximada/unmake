@@ -1,14 +1,15 @@
 package main
+
 import (
-	"strings"
 	"bufio"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"path"
-	"regexp"
 	"path/filepath"
-	"io/ioutil"
+	"regexp"
+	"strings"
 )
 
 const version = 1
@@ -27,7 +28,7 @@ func DisplayUsage(makefilePath string) {
 	regx, err := regexp.Compile(`(?m:^([^._][a-zA-Z0-9_\-]*):(.*)\n(^\t\@\##.*\n)?(^\t\@\#\s*\n)?((^\t\@\#.*\n)*))`)
 	if err != nil {
 		panic("")
-    }
+	}
 	for _, match := range regx.FindAllSubmatch(buf, -1) {
 		cmdName := strings.TrimSpace(string(match[1]))
 		paramLine := strings.TrimSpace(strings.Trim(string(match[3]), "\t@#"))
@@ -35,7 +36,6 @@ func DisplayUsage(makefilePath string) {
 		fmt.Printf("* %s %s\n\n%s\n", cmdName, paramLine, usage)
 	}
 }
-
 
 func ParseInclude(makefilePath string) {
 	absMakefilePath, err := filepath.Abs(makefilePath)
@@ -54,7 +54,7 @@ func ParseInclude(makefilePath string) {
 	if err != nil {
 		log.Println(err)
 		return
-    }
+	}
 	scanner := bufio.NewScanner(fp)
 
 	for scanner.Scan() {
