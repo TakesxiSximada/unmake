@@ -4,7 +4,6 @@ import (
 	"flag"
 	"log"
 	"os"
-	unmake "github.com/TakesxiSximada/unmake/unmake-go"
 )
 
 func main() {

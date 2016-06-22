@@ -1,4 +1,4 @@
-package unmake
+package main
 
 import (
 	"strings"
