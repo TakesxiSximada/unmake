@@ -1,15 +1,9 @@
-include test.mk
 
 .PHONY: help
-help: run
+help:
 	@# display usage
 
 	@./unmake Makefile
 
-.PHONY: run
-run:
-	@## target=NO
-	@#
-	@# execute line
-
-	go run main.go Makefile
+include run.mk
+include build.mk
