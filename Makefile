@@ -4,6 +4,7 @@ UNMAKE := $${GOPATH}/bin/unmake
 build:
 	@# build unmake
 
+	go fmt *.go
 	go build
 
 
