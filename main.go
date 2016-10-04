@@ -19,6 +19,6 @@ func main() {
 	}
 
 	for _, makeFilePath := range args {
-		ParseInclude(makeFilePath)
+		DisplayUsage(makeFilePath)
 	}
 }

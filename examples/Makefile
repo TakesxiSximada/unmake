@@ -1,9 +1,10 @@
 
+
 .PHONY: help
 help:
 	@# display usage
 
-	@./unmake Makefile
+	@./unmake $(MAKEFILES)
 
 include run.mk
 include build.mk

@@ -1,18 +1,14 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
-	"path"
-	"path/filepath"
 	"regexp"
 	"strings"
 )
 
-const version = 1
+const version = 2
 
 func DisplayUsage(makefilePath string) {
 	fp, err := os.OpenFile(makefilePath, os.O_RDONLY, 0600)
@@ -34,42 +30,5 @@ func DisplayUsage(makefilePath string) {
 		paramLine := strings.TrimSpace(strings.Trim(string(match[3]), "\t@#"))
 		usage := strings.Replace(string(match[5]), "\t@#", "     ", -1)
 		fmt.Printf("* %s %s\n\n%s\n", cmdName, paramLine, usage)
-	}
-}
-
-func ParseInclude(makefilePath string) {
-	absMakefilePath, err := filepath.Abs(makefilePath)
-	if err != nil {
-		return
-	}
-	makefileDirPath := filepath.Dir(absMakefilePath)
-	DisplayUsage(makefilePath)
-	fp, err := os.OpenFile(absMakefilePath, os.O_RDONLY, 0600)
-	if err != nil {
-		return
-	}
-	defer fp.Close()
-
-	regx, err := regexp.Compile(`^include ([^#]+)`)
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	scanner := bufio.NewScanner(fp)
-
-	for scanner.Scan() {
-		line := scanner.Text()
-
-		for _, matching := range regx.FindAllStringSubmatch(line, -1) {
-			if len(matching) > 0 {
-				for _, includeFilePath := range matching[1:] {
-					if !path.IsAbs(includeFilePath) {
-						includeFilePath = path.Join(makefileDirPath, includeFilePath)
-						includeFilePath, err = filepath.Abs(includeFilePath)
-					}
-					ParseInclude(includeFilePath)
-				}
-			}
-		}
 	}
 }
