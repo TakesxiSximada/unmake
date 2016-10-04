@@ -5,6 +5,7 @@ build:
 	@# build unmake
 
 	go fmt *.go
+	golint -set_exit_status=1
 	go build
 
 

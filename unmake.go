@@ -10,6 +10,7 @@ import (
 
 const version = 2
 
+// DisplayUsage display document of Makefile.
 func DisplayUsage(makefilePath string) {
 	fp, err := os.OpenFile(makefilePath, os.O_RDONLY, 0600)
 	if err != nil {
