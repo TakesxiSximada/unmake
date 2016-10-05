@@ -8,4 +8,4 @@ include build.mk
 help:
 	@# display usage
 
-	@../unmake $(MAKEFILES)
+	@../unmake $(MAKEFILE_LIST)
