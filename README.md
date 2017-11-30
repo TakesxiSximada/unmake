@@ -7,6 +7,13 @@
 $ go get github.com/TakesxiSximada/unmake
 ```
 
+or 
+
+```
+$ curl https://github.com/TakesxiSximada/unmake/releases/download/2/unmake -o /usr/local/bin/unmake
+$ chomod 755 /usr/local/bin/unmake
+```
+
 ## How to use
 
 ### Syntax
